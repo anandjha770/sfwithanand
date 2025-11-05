@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MySite — Home</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS (we'll create this file in a later step) -->
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <style>
+      body {
+        background-color: #f9fafb;
+      }
+      .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+      }
+      .btn-primary:hover {
+        background-color: #0b5ed7;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">MySite</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="videos.html">Videos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="bg-light py-5">
+      <div class="container text-center">
+        <h1 class="display-5 fw-bold">Hey, I'm Anand 👋</h1>
+        <p class="lead text-muted mb-4">
+          Welcome to my personal website — a space where I share my knowledge
+          about Salesforce, OmniStudio, and tech tutorials.
+        </p>
+        <a href="blog.html" class="btn btn-primary btn-lg me-2"
+          >Read My Blogs</a
+        >
+        <a href="videos.html" class="btn btn-outline-secondary btn-lg"
+          >Watch Videos</a
+        >
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      &copy; 2025 MySite
+    </footer>
+
+    <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS (we'll create this in a later step) -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

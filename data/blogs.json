@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Understanding OmniStudio Basics",
+    "description": "Learn what OmniStudio is, why it’s powerful, and how it simplifies Salesforce development.",
+    "link": "blog/post1.html",
+    "date": "November 5, 2025"
+  },
+  {
+    "title": "Building DataRaptors in Salesforce",
+    "description": "A beginner-friendly guide to DataRaptors: what they are, how to configure them, and best practices.",
+    "link": "blog/post2.html",
+    "date": "November 6, 2025"
+  }
+]
