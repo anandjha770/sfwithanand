@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sfwithanand.in/sitemap.xml
+
+# Optional: Prevent Google from indexing verification file
+Disallow: /google0104210d418123f4.html
