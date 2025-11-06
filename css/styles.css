@@ -1,3 +1,7 @@
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* ========== GLOBAL STYLES ========== */
 body {
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
@@ -67,4 +71,215 @@ footer {
 /* ========== UTILITY ========== */
 .text-muted {
   color: #6c757d !important;
+}
+
+ /* ========== HERO SECTION (Gradient + Animated Background) ========== */
+.hero {
+  position: relative;
+  color: #fff;
+  padding: 8rem 1rem 6rem;
+  background: linear-gradient(-45deg, #0d6efd, #2196f3, #00bcd4, #1976d2);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero h1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Buttons */
+.hero .btn {
+  transition: all 0.3s ease;
+  border-radius: 50px;
+  padding: 0.7rem 1.6rem;
+}
+
+.hero .btn-light {
+  background-color: #fff;
+  color: #0d6efd;
+  border: none;
+}
+
+.hero .btn-light:hover {
+  background-color: #e3f2fd;
+  color: #0d6efd;
+  transform: translateY(-3px);
+}
+
+.hero .btn-outline-light:hover {
+  background-color: #fff;
+  color: #0d6efd;
+  transform: translateY(-3px);
+}
+
+
+/* ========== ABOUT SECTION ========== */
+.about {
+  background-color: #fff;
+  padding: 4rem 1rem;
+}
+
+.about h2 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* ========== SKILLS SECTION ========== */
+.skills {
+  background-color: #f3f6fa;
+  padding: 4rem 1rem;
+}
+
+.skill-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-card i {
+  font-size: 2.5rem;
+  color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+/* ========== BLOG SECTION ========== */
+.blog {
+  background-color: #fff;
+  padding: 4rem 1rem;
+}
+
+.blog-card a {
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 500;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ========== VIDEOS SECTION ========== */
+.videos {
+  background-color: #f3f6fa;
+  padding: 4rem 1rem;
+}
+
+.videos iframe {
+  border-radius: 10px;
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact {
+  background-color: #fff;
+  padding: 4rem 1rem;
+}
+
+.social-icons a {
+  color: #0d6efd;
+  font-size: 1.8rem;
+  margin: 0 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #212529;
+  color: #f8f9fa;
+  font-size: 0.9rem;
+}
+
+
+/* ================= DARK MODE ================= */
+body.dark-mode {
+  background-color: #121212;
+  color: #eaeaea;
+}
+
+body.dark-mode .navbar {
+  background-color: #1e1e1e !important;
+}
+
+body.dark-mode .navbar-brand {
+  color: #66b2ff !important;
+}
+
+body.dark-mode .nav-link {
+  color: #ccc !important;
+}
+
+body.dark-mode .nav-link.active,
+body.dark-mode .nav-link:hover {
+  color: #66b2ff !important;
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(-45deg, #0b3d91, #0d6efd, #004ba0, #1a237e);
+}
+
+body.dark-mode .btn-light {
+  background-color: #1e88e5;
+  color: #fff;
+}
+
+body.dark-mode .btn-outline-light {
+  border-color: #66b2ff;
+  color: #66b2ff;
+}
+
+body.dark-mode .about,
+body.dark-mode .skills,
+body.dark-mode .blog,
+body.dark-mode .videos,
+body.dark-mode .contact {
+  background: #1e1e1e;
+  color: #eaeaea;
+}
+
+body.dark-mode .card {
+  background-color: #2a2a2a;
+  color: #eaeaea;
+  border: 1px solid #333;
+}
+
+body.dark-mode footer {
+  background-color: #0d0d0d;
+  color: #bbb;
+}
+
+body.dark-mode .social-icons a {
+  color: #66b2ff;
+}
+
+body.dark-mode .social-icons a:hover {
+  transform: scale(1.2);
+  color: #90caf9;
 }

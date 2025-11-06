@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SFWithAnand — Home</title>
+    <title>SFWithAnand | Salesforce & OmniStudio Developer</title>
 
     <!-- Bootstrap CSS (CDN) -->
     <link
@@ -11,40 +11,47 @@
       rel="stylesheet"
     />
 
-    <!-- Custom CSS (we'll create this file in a later step) -->
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
     <link href="css/styles.css" rel="stylesheet" />
 
-    <style>
-      body {
-        background-color: #f9fafb;
-      }
-      .btn-primary {
-        background-color: #0d6efd;
-        border: none;
-      }
-      .btn-primary:hover {
-        background-color: #0b5ed7;
-      }
-    </style>
+    <!-- SEO Meta -->
+    <meta
+      name="description"
+      content="Learn Salesforce and OmniStudio with Anand Kumar Jha. Tutorials, blogs, and videos for developers and learners."
+    />
+    <meta
+      name="keywords"
+      content="Salesforce, OmniStudio, Vlocity, DataRaptor, OmniScript, SFWithAnand, Udemy"
+    />
+    <meta name="author" content="Anand Kumar Jha" />
+    <link rel="canonical" href="https://sfwithanand.in/" />
+    <meta property="og:site_name" content="SFWithAnand" />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
   </head>
+
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top"
+    >
       <div class="container">
         <a class="navbar-brand" href="index.html">SFWithAnand</a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#nav"
-          aria-controls="nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          data-bs-target="#navMenu"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="nav">
+        <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link active" href="index.html">Home</a>
@@ -61,34 +68,147 @@
           </ul>
         </div>
       </div>
+      <button id="themeToggle" class="btn btn-sm btn-outline-secondary ms-3">
+        <i class="fa-solid fa-moon"></i>
+      </button>
     </nav>
 
-    <!-- Main content -->
-    <main class="bg-light py-5">
-      <div class="container text-center">
-        <h1 class="display-5 fw-bold">Hey, I'm Anand 👋</h1>
-        <p class="lead text-muted mb-4">
-          Welcome to my personal website — a space where I share my knowledge
-          about Salesforce, OmniStudio, and tech tutorials.
+    <!-- Hero Section -->
+    <section class="hero mt-5 pt-5 text-center text-white">
+      <div class="container">
+        <h1 class="fw-bold display-5 mb-3">SFWithAnand</h1>
+        <p class="lead mb-3">
+          Salesforce & OmniStudio Developer | Udemy Instructor | Blogger
         </p>
-        <a href="blog.html" class="btn btn-primary btn-lg me-2"
-          >Read My Blogs</a
-        >
-        <a href="videos.html" class="btn btn-outline-secondary btn-lg"
-          >Watch Videos</a
-        >
+        <p class="mb-4">
+          I share tutorials, blogs, and videos to help developers master
+          Salesforce & OmniStudio — from basics to advanced concepts.
+        </p>
+        <div class="d-flex justify-content-center">
+          <a href="blog.html" class="btn btn-light btn-lg me-3 fw-semibold"
+            >Read My Blogs</a
+          >
+          <a href="videos.html" class="btn btn-outline-light btn-lg fw-semibold"
+            >Watch Videos</a
+          >
+        </div>
       </div>
-    </main>
+    </section>
+
+    <!-- About Section -->
+    <section class="about text-center">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          I’m a Salesforce developer with over 4+ years of experience,
+          specializing in OmniStudio and Vlocity. I love simplifying complex
+          topics through guided tutorials.
+        </p>
+        <a href="contact.html" class="btn btn-primary mt-3">Connect with Me</a>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills text-center">
+      <div class="container">
+        <h2>What I Do</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <div class="skill-card">
+              <i class="fa-solid fa-gear"></i>
+              <h4>OmniStudio</h4>
+              <p>OmniScripts, DataRaptor, Integration Procedures, FlexCards</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="skill-card">
+              <i class="fa-brands fa-salesforce"></i>
+              <h4>Salesforce</h4>
+              <p>Service Cloud, Flows, LWC, Declarative Solutions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog">
+      <div class="container">
+        <h2 class="text-center">Latest Blogs</h2>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card p-3 blog-card">
+              <h5>How to Use Data Mapper in OmniScript</h5>
+              <p>
+                Step-by-step guide to implement and optimize Data Mapper in your
+                OmniScript projects.
+              </p>
+              <a href="blog/post1.html">Read More →</a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-3 blog-card">
+              <h5>Top 5 DataRaptor Best Practices</h5>
+              <p>
+                Improve performance and maintainability of your DataRaptor
+                configurations.
+              </p>
+              <a href="blog/post2.html">Read More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="videos text-center">
+      <div class="container">
+        <h2>Watch My Videos</h2>
+        <div class="row justify-content-center g-4">
+          <div class="col-md-5">
+            <iframe
+              width="100%"
+              height="250"
+              src="https://www.youtube.com/embed/VUJbvHfgRsE?si=OIDRcGEnug717kr7"
+              title="YouTube video"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="col-md-5">
+            <iframe
+              width="100%"
+              height="250"
+              src="https://www.youtube.com/embed/CRuLnQK2tso?si=qcQIPmUO8KpO6Bge"
+              title="YouTube video"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <a href="videos.html" class="btn btn-primary mt-4">See All Videos</a>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact text-center">
+      <div class="container">
+        <h2>Let's Connect</h2>
+        <div class="social-icons mt-3">
+          <a href="https://www.linkedin.com/in/anandjha0/" target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-      &copy; 2025 MySite
+    <footer class="text-center py-3">
+      © 2025 SFWithAnand — Crafted with ❤️ by Anand Kumar Jha
     </footer>
 
-    <!-- Bootstrap JS bundle (includes Popper) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom JS (we'll create this in a later step) -->
     <script src="js/script.js"></script>
   </body>
 </html>

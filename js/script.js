@@ -137,3 +137,43 @@ if (window.location.pathname.endsWith("contact.html")) {
     });
   }
 }
+
+// ====== DARK MODE TOGGLE ====== //
+document.addEventListener("DOMContentLoaded", function () {
+  const themeToggle = document.getElementById("themeToggle");
+
+  // Exit if toggle not found (prevents console errors on pages without navbar)
+  if (!themeToggle) return;
+
+  const icon = themeToggle.querySelector("i");
+  const savedTheme = localStorage.getItem("theme");
+
+  // Apply saved theme preference
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    icon.classList.replace("fa-moon", "fa-sun");
+  } else if (
+    !savedTheme &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    // Auto-detect system dark mode (if no preference saved)
+    document.body.classList.add("dark-mode");
+    icon.classList.replace("fa-moon", "fa-sun");
+  }
+
+  // Handle toggle click
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+
+    // Switch icons
+    if (isDark) {
+      icon.classList.replace("fa-moon", "fa-sun");
+    } else {
+      icon.classList.replace("fa-sun", "fa-moon");
+    }
+
+    // Save preference
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+});
