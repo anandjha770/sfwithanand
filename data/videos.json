@@ -1,13 +1,13 @@
 [
   {
-    "title": "OmniStudio Basics Tutorial",
-    "description": "A beginner’s guide to OmniStudio and how to create guided Salesforce experiences.",
+    "title": "How to Get All Contacts of an Account using DR",
+    "description": "In this video, I explain how to retrieve all Contacts related to an Account in Salesforce using a DataRaptor (DR).",
     "youtubeId": "VUJbvHfgRsE?si=OIDRcGEnug717kr7",
     "date": "November 7, 2025"
   },
   {
-    "title": "DataRaptor Deep Dive",
-    "description": "Learn how DataRaptors help you extract, transform, and load data efficiently in Salesforce.",
+    "title": "Increase Drop File Area in Lightning File Upload",
+    "description": "In this video, I’ll show you how to expand the drop-zone area in Lightning File Upload to make it more user-friendly and enhance the overall UI experience.",
     "youtubeId": "CRuLnQK2tso?si=qcQIPmUO8KpO6Bge",
     "date": "November 8, 2025"
   }
