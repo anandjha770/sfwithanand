@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn how to use Static Resource in Salesforce to style and increase the drop area of the Lightning File Upload component in LWC."
+    />
+    <meta name="author" content="Anand Kumar Jha" />
+    <title>
+      How to Use Static Resource to Style File Upload in Salesforce LWC
+    </title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/blog.css" />
+  </head>
+
+  <body class="blog-page">
+    <header class="blog-header">
+      <h1>
+        💡 How to Use Static Resource in Salesforce to Style the File Upload
+        Component (LWC)
+      </h1>
+      <p class="blog-date">
+        Published on November 7, 2025 • by Anand Kumar Jha
+      </p>
+    </header>
+
+    <main class="blog-content">
+      <section>
+        <h2>🔹 Introduction</h2>
+        <p>
+          When working with <strong>Lightning Web Components (LWC)</strong>, the
+          <code>&lt;lightning-file-upload&gt;</code> component is a convenient
+          way to let users upload files to Salesforce records. However,
+          sometimes the default style doesn’t fit your UI — the drop area might
+          be too narrow, or you may want to make it full-width for a better user
+          experience.
+        </p>
+        <p>
+          In this tutorial, we’ll see how to
+          <strong
+            >use a Static Resource to style your File Upload component</strong
+          >, so it looks clean, responsive, and professional.
+        </p>
+      </section>
+
+      <section>
+        <h2>🎯 Goal</h2>
+        <ul>
+          <li>Increase the width of the file upload area.</li>
+          <li>Center the upload body text.</li>
+          <li>Make the overall drop zone look more appealing.</li>
+        </ul>
+        <p>
+          We’ll achieve this using a <strong>custom CSS file</strong> uploaded
+          as a <strong>Static Resource</strong>, and then load it dynamically in
+          the LWC using the <code>loadStyle</code> function.
+        </p>
+      </section>
+
+      <section>
+        <h2>⚙️ Step 1: Create a CSS File</h2>
+        <p>
+          Create a file named <code>customStyleCSS.css</code> with the following
+          content:
+        </p>
+
+        <pre><code class="language-css">
+.fileClass {
+  width: 100% !important;
+}
+.fileClass .slds-file-selector {
+  width: 100% !important;
+}
+.fileClass .slds-file-selector__dropzone {
+  width: 100% !important;
+}
+.fileClass .slds-file-selector__dropzone slot {
+  display: inline-block;
+  width: 100% !important;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.fileClass .slds-file-selector__dropzone slot .slds-file-selector__body {
+  margin-left: 41% !important;
+}
+</code></pre>
+
+        <p>
+          This CSS ensures the entire file upload area spans the full width and
+          has proper padding for better usability.
+        </p>
+      </section>
+
+      <section>
+        <h2>🧩 Step 2: Upload It as a Static Resource</h2>
+        <ol>
+          <li>
+            Go to <strong>Setup → Static Resources</strong> in Salesforce.
+          </li>
+          <li>Click <strong>New</strong>.</li>
+          <li>
+            Enter a <strong>Name</strong> (e.g., <code>customStyleCSS</code>).
+          </li>
+          <li>Upload your <code>customStyleCSS.css</code> file.</li>
+          <li>Set <strong>Cache Control</strong> to <em>Public</em>.</li>
+          <li>Click <strong>Save</strong>.</li>
+        </ol>
+        <p>
+          Your CSS file is now reusable across multiple components via
+          <strong>Static Resources</strong>.
+        </p>
+      </section>
+
+      <section>
+        <h2>🧱 Step 3: Create Your LWC Component</h2>
+
+        <h3>🧾 HTML (customFileUpload.html)</h3>
+        <pre><code class="language-html">
+&lt;template&gt;
+  &lt;lightning-file-upload
+    label="Upload files"
+    name="fileUploader"
+    accept={acceptedFormats}
+    record-id={myRecordId}
+    onuploadfinished={handleUploadFinished}
+    class="fileClass"
+  &gt;&lt;/lightning-file-upload&gt;
+&lt;/template&gt;
+</code></pre>
+
+        <p>
+          We’re adding a custom class <code>fileClass</code> that will be styled
+          by our external CSS file.
+        </p>
+
+        <h3>⚙️ JavaScript (customFileUpload.js)</h3>
+        <pre><code class="language-js">
+import { LightningElement, api } from "lwc";
+import { loadStyle } from "lightning/platformResourceLoader";
+import customStyle from "@salesforce/resourceUrl/customStyleCSS";
+
+export default class CustomFileUpload extends LightningElement {
+  @api myRecordId;
+
+  connectedCallback() {
+    loadStyle(this, customStyle);
+  }
+
+  get acceptedFormats() {
+    return [".pdf", ".png"];
+  }
+
+  handleUploadFinished(event) {
+    // Get the list of uploaded files
+    const uploadedFiles = event.detail.files;
+    alert("No. of files uploaded : " + uploadedFiles.length);
+  }
+}
+</code></pre>
+        <p>
+          <strong>Explanation:</strong> The <code>loadStyle</code> function
+          dynamically loads your CSS file from Static Resources. The
+          <code>.fileClass</code> styles are then applied to the file upload
+          component.
+        </p>
+      </section>
+
+      <section>
+        <h2>🧠 Step 4: Deploy and Test</h2>
+        <p>
+          Deploy your component and use it in a Lightning App Page or Record
+          Page. You’ll now see that the file upload drop zone spans the entire
+          width and looks clean and professional.
+        </p>
+        <p>
+          Try uploading <code>.pdf</code> or <code>.png</code> files — the
+          upload event will show an alert with the number of uploaded files.
+        </p>
+      </section>
+
+      <section>
+        <h2>💬 Bonus Tip</h2>
+        <ul>
+          <li>Add icons or “Drag & Drop” text for visual clarity.</li>
+          <li>Use SLDS utility classes for a consistent Salesforce look.</li>
+          <li>
+            Experiment with border colors or shadows to highlight the drop area.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>📺 Watch the Video Tutorial</h2>
+        <p>
+          For a complete <strong>visual walkthrough</strong>, check out my
+          YouTube video:<br />
+          👉
+          <a
+            href="https://www.youtube.com/embed/CRuLnQK2tso?si=qcQIPmUO8KpO6Bge"
+            target="_blank"
+            >Watch: How to Increase Drop Area of File Upload Using Static
+            Resource</a
+          >
+        </p>
+      </section>
+
+      <section>
+        <h2>🧾 Conclusion</h2>
+        <p>
+          Using <strong>Static Resources</strong> in Salesforce is a powerful
+          way to add custom styling to your LWC components — without hardcoding
+          CSS inside your component.
+        </p>
+        <p>
+          This approach keeps your styles
+          <strong>modular, reusable, and easy to maintain</strong> across
+          multiple projects.
+        </p>
+        <p>
+          If you found this helpful, don’t forget to subscribe to my channel for
+          more tutorials on
+          <strong>Salesforce LWC</strong>, <strong>Omnistudio</strong>, and
+          other best practices.
+        </p>
+      </section>
+    </main>
+
+    <footer class="blog-footer">
+      <p>
+        © 2025 Anand Kumar Jha — Salesforce Developer | Omnistudio Specialist
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+/* ================================
+   Blog Global Styling (Reusable)
+   Author: Anand Kumar Jha
+   ================================ */
+
+/* Page background */
+body.blog-page {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f7f9fb;
+  color: #222;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+/* Blog container */
+main.blog-content {
+  max-width: 850px;
+  background: #ffffff;
+  margin: 50px auto;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+header.blog-header {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+header.blog-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+header.blog-header .blog-date {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Section titles */
+.blog-content h2 {
+  color: #1b73e8;
+  border-left: 4px solid #1b73e8;
+  padding-left: 10px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.blog-content h3 {
+  color: #333;
+  margin-top: 25px;
+}
+
+/* Paragraphs and lists */
+.blog-content p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-left: 25px;
+  margin-bottom: 20px;
+}
+
+/* Code blocks */
+pre {
+  background: #f6f8fa;
+  padding: 15px 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: "Fira Code", monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  border-left: 4px solid #1b73e8;
+  margin: 15px 0;
+}
+
+code {
+  background: #eef1f5;
+  padding: 3px 5px;
+  border-radius: 4px;
+  font-family: "Fira Code", monospace;
+  font-size: 0.95rem;
+}
+
+/* Links */
+a {
+  color: #1b73e8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer.blog-footer {
+  text-align: center;
+  padding: 40px 10px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main.blog-content {
+    padding: 25px 20px;
+  }
+
+  header.blog-header h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Optional Hover Elevation */
+main.blog-content:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transition: 0.3s ease;
+}
+
+/* for dark mode */
+/*@media (prefers-color-scheme: dark) {
+  body.blog-page {
+    background: #121212;
+    color: #e5e5e5;
+  }
+
+  main.blog-content {
+    background: #1e1e1e;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+  }
+
+  .blog-content h2 {
+    color: #4da3ff;
+    border-left-color: #4da3ff;
+  }
+
+  pre {
+    background: #2a2a2a;
+    border-left-color: #4da3ff;
+  }
+
+  code {
+    background: #333;
+  }
+
+  a {
+    color: #4da3ff;
+  }
+
+  footer.blog-footer {
+    color: #999;
+  }
+}*/
