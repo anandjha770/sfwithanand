@@ -28,7 +28,7 @@ if (window.location.pathname.endsWith("blog.html")) {
 
         container.innerHTML += `
           <div class="col-md-6">
-            <div class="card shadow-sm h-100">
+            <div class="card shadow-sm h-100 blog-card" data-category="${blog.category}">
               <div class="card-body">
                 <h5 class="card-title">${blog.title}</h5>
                 <p class="text-muted small">${blog.date}</p>
@@ -41,6 +41,30 @@ if (window.location.pathname.endsWith("blog.html")) {
       });
 
       console.log("✅ Finished rendering all blog posts.");
+
+      // ====== Blog Category Filter ======
+      const filterButtons = document.querySelectorAll("#filterTabs button");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Toggle active button
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+
+          const selected = button.dataset.category;
+          const cards = document.querySelectorAll("#blogContainer .col-md-6");
+
+          cards.forEach((col) => {
+            const card = col.querySelector(".card");
+            const category = card?.dataset?.category;
+            if (selected === "all" || category === selected) {
+              col.style.display = "block";
+            } else {
+              col.style.display = "none";
+            }
+          });
+        });
+      });
     })
     .catch((err) => {
       console.error("❌ Error occurred while loading blogs:", err);
