@@ -3,82 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog | MySite</title>
+    <title>Blog | SFWithAnand</title>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">SFWithAnand</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="blog.html">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="videos.html">Videos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <header></header>
 
-    <!-- Blog section -->
-    <main class="container my-5">
-      <h2>Blog</h2>
-      <p class="text-muted">
-        Here you’ll find my latest articles and tutorials.
-      </p>
+    <main class="container mt-5 pt-4">
+      <h2 class="fw-bold text-center mb-4">Latest Blogs</h2>
 
-      <div class="d-flex flex-wrap gap-2 my-4" id="filterTabs">
+      <div class="text-center mb-4" id="filterTabs">
         <button class="btn btn-outline-primary active" data-category="all">
           All
         </button>
         <button class="btn btn-outline-primary" data-category="OmniStudio">
           OmniStudio
         </button>
-        <button class="btn btn-outline-primary" data-category="LWC">
-          Lightning Web Components (LWC)
-        </button>
+        <button class="btn btn-outline-primary" data-category="LWC">LWC</button>
         <button class="btn btn-outline-primary" data-category="Integration">
-          Integration / Automation
+          Integration
         </button>
         <button class="btn btn-outline-primary" data-category="Admin">
-          Admin & Deployment
+          Admin
         </button>
       </div>
 
-      <div id="blogContainer" class="row gy-4">
-        <!-- Blog posts will load here dynamically -->
-        <div class="text-center text-secondary">Loading blogs...</div>
+      <div id="blogContainer" class="row g-4">
+        <p class="text-center text-muted">Loading blogs...</p>
       </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-      &copy; 2025 MySite
-    </footer>
+    <footer></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
   </body>
 </html>
