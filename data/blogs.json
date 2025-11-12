@@ -3,6 +3,7 @@
     "title": "Style File Upload in Salesforce LWC Using Static Resource",
     "description": "Learn how to enhance and expand the drop area of the Lightning File Upload component in Salesforce LWC using a custom CSS file stored as a Static Resource. Step-by-step guide with code examples and explanations.",
     "link": "blog/style-file-upload-using-static-resource.html",
-    "date": "November 6, 2025"
+    "date": "November 6, 2025",
+    "category": "LWC"
   }
 ]
