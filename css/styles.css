@@ -8,6 +8,7 @@ body {
   background-color: #f9fafb;
   color: #333;
   line-height: 1.6;
+  padding-top: 70px;
 }
 
 /* Make headings stand out */
@@ -175,8 +176,13 @@ footer {
 
 .blog-card a {
   text-decoration: none;
-  color: hsl(0, 0%, 100%);
+  color: #0d6efd; /* Bootstrap primary blue */
   font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.blog-card a:hover {
+  color: #0b5ed7; /* darker blue on hover */
 }
 
 .blog-card:hover {

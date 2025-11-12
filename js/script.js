@@ -1,5 +1,24 @@
 // script.js
 
+// ===== Load Header & Footer Dynamically =====
+async function loadComponent(selector, path) {
+  try {
+    const res = await fetch(path);
+    const html = await res.text();
+    document.querySelector(selector).innerHTML = html;
+  } catch (err) {
+    console.error(`Error loading ${path}:`, err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const isBlogPost = window.location.pathname.includes("/blog/");
+  const basePath = isBlogPost ? "../components/" : "components/";
+
+  loadComponent("header", `${basePath}header.html`);
+  loadComponent("footer", `${basePath}footer.html`);
+});
+
 // Check what page we are on
 console.log("🟢 Current page path:", window.location.pathname);
 
