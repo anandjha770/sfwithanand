@@ -1,0 +1,57 @@
+/* ==================================
+    UTILITY STYLES (Cards, Buttons, Shadows)
+   ================================== */
+
+/* Buttons */
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #0d6efd;
+}
+
+/* Nav links */
+.nav-link {
+  color: #555 !important;
+  font-weight: 500;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Text muted */
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* Social Icons */
+.social-icons a {
+  font-size: 1.8rem;
+  margin: 0 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}

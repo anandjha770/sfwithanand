@@ -1,0 +1,40 @@
+/* ==================================
+    GLOBAL BASE STYLES
+   ================================== */
+
+/* Smooth transitions globally */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Body */
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 70px; /* space for fixed navbar */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+/* Sections */
+section {
+  padding: 4rem 1rem;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+a:hover {
+  text-decoration: underline;
+}
