@@ -1,17 +1,5 @@
 // script.js
 
-// Inject reusable <head>
-function loadHead() {
-  fetch("/components/head.html")
-    .then((res) => res.text())
-    .then((data) => {
-      document.head.insertAdjacentHTML("beforeend", data);
-    })
-    .catch((err) => console.error("Error loading head:", err));
-}
-
-loadHead();
-
 // ===== Load Header & Footer Dynamically =====
 async function loadComponent(selector, path) {
   try {
