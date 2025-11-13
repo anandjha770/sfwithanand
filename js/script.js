@@ -220,3 +220,20 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  const fb = document.querySelector(".share-btn.fb");
+  const tw = document.querySelector(".share-btn.tw");
+  const ln = document.querySelector(".share-btn.ln");
+  const wa = document.querySelector(".share-btn.wa");
+
+  if (fb) fb.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  if (tw)
+    tw.href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+  if (ln)
+    ln.href = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}`;
+  if (wa) wa.href = `https://wa.me/?text=${pageTitle}%20${pageUrl}`;
+});
