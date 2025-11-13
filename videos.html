@@ -6,8 +6,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Videos | SFWithAnand</title>
+    <!-- Keep page hidden until global head (CSS + GA) is injected -->
+    <script>
+      // hide page immediately
+      document.documentElement.style.visibility = "hidden";
+    </script>
+
+    <!-- Load the head-loader early (defer so it runs after HTML parsing, but before other deferred scripts) -->
     <script src="/js/core/head-loader.js" defer></script>
+
+    <title>Videos | SFWithAnand</title>
+    <!-- <script src="/js/core/head-loader.js" defer></script> -->
   </head>
 
   <body>
