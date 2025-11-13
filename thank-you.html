@@ -1,18 +1,25 @@
-<style>
-  html {
-    visibility: hidden;
-  }
-</style>
-
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Keep page hidden until global head (CSS + GA) is injected -->
-    <script>
-      // hide page immediately
-      document.documentElement.style.visibility = "hidden";
-    </script>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
 
+    <!-- 🔥 Google Analytics MUST load BEFORE head-loader -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SNG1ZPG3BP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SNG1ZPG3BP");
+    </script>
     <!-- Load the head-loader early (defer so it runs after HTML parsing, but before other deferred scripts) -->
     <script src="/js/core/head-loader.js" defer></script>
 
