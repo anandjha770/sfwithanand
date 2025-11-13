@@ -3,34 +3,30 @@
   <!-- Main Pages -->
   <url>
     <loc>https://sfwithanand.in/</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2025-11-13</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://sfwithanand.in/blog.html</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2025-11-13</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://sfwithanand.in/videos.html</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2025-11-13</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://sfwithanand.in/contact.html</loc>
-    <lastmod>2025-11-06</lastmod>
+    <lastmod>2025-11-13</lastmod>
     <priority>0.70</priority>
   </url>
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://sfwithanand.in/blog/post1.html</loc>
-    <lastmod>2025-11-06</lastmod>
+    <loc>https://sfwithanand.in/blog/style-file-upload-using-static-resource.html</loc>
+    <lastmod>2025-11-13</lastmod>
     <priority>0.80</priority>
   </url>
-  <url>
-    <loc>https://sfwithanand.in/blog/post2.html</loc>
-    <lastmod>2025-11-06</lastmod>
-    <priority>0.80</priority>
-  </url>
+
 </urlset>
