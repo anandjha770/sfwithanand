@@ -16,7 +16,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-SNG1ZPG3BP");
     </script>
 
@@ -45,12 +44,30 @@
 
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <form id="contactForm">
+            <!-- ⭐ UPDATED WORKING CONTACT FORM ⭐ -->
+            <form
+              action="https://formsubmit.co/sfwithanand@gmail.com"
+              method="POST"
+            >
+              <!-- Disable CAPTCHA -->
+              <input type="hidden" name="_captcha" value="false" />
+
+              <!-- Redirect to thank you page -->
+              <input
+                type="hidden"
+                name="_next"
+                value="https://sfwithanand.in/thank-you.html"
+              />
+
+              <!-- Spam protection -->
+              <input type="text" name="_honey" style="display: none" />
+
               <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   class="form-control"
                   placeholder="Enter your name"
                   required
@@ -62,6 +79,7 @@
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   class="form-control"
                   placeholder="Enter your email"
                   required
@@ -72,6 +90,7 @@
                 <label for="message" class="form-label">Message</label>
                 <textarea
                   id="message"
+                  name="message"
                   class="form-control"
                   rows="4"
                   placeholder="Your message"
@@ -83,6 +102,7 @@
                 Send Message
               </button>
             </form>
+
             <div id="formResponse" class="mt-3 text-center"></div>
           </div>
         </div>
