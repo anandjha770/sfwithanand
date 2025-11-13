@@ -35,8 +35,17 @@
     <link href="css/styles.css" rel="stylesheet" />
   </head> -->
   <head>
+    <!-- Keep page hidden until global head (CSS + GA) is injected -->
+<script>
+  // hide page immediately
+  document.documentElement.style.visibility = 'hidden';
+</script>
+
+<!-- Load the head-loader early (defer so it runs after HTML parsing, but before other deferred scripts) -->
+<script src="/js/core/head-loader.js" defer></script>
+
   <title>Blog | SFWithAnand</title>
-  <script src="/js/core/head-loader.js" defer></script>
+  <!-- <script src="/js/core/head-loader.js" defer></script> -->
 </head>
 
 
