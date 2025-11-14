@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+
+    <!-- Google Analytics (loads before head-loader.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SNG1ZPG3BP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SNG1ZPG3BP");
+    </script>
+
+    <!-- Load Global Head -->
+    <script src="/js/core/head-loader.js" defer></script>
+
+    <title>How to Set recordId in LWC Quick Action | SFWithAnand</title>
+  </head>
+
+  <body class="blog-page">
+    <!-- Global Header -->
+    <header></header>
+
+    <!-- Blog Content -->
+    <main class="blog-content">
+      <article>
+        <header class="blog-header">
+          <h1>
+            How to Set <code>recordId</code> in LWC Quick Action in Salesforce
+          </h1>
+          <p class="blog-date">
+            Published on November 14, 2025 • by Anand Kumar Jha
+          </p>
+        </header>
+
+        <section>
+          <h2>🔹 Introduction</h2>
+          <p>
+            Lightning Web Components (LWC) can be used as
+            <strong>Quick Actions</strong> on Salesforce record pages—making it
+            easy to build forms, modals, and automation.
+          </p>
+          <p>
+            One of the most common questions developers face is:
+            <strong
+              >“How do I get the recordId inside an LWC Quick Action?”</strong
+            >
+          </p>
+          <p>
+            This guide explains the correct pattern using
+            <strong>getter/setter</strong>.
+          </p>
+        </section>
+
+        <section>
+          <h2>🎯 Why You Need <code>recordId</code> in Quick Actions</h2>
+          <p>
+            Quick Actions run in the context of the currently opened record. You
+            need the record Id for:
+          </p>
+          <ul>
+            <li>Sending email related to the record</li>
+            <li>Creating related records</li>
+            <li>Fetching existing values</li>
+            <li>Running Apex logic tied to that record</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>⚙️ Best Practice: Use Getter/Setter</h2>
+          <p>
+            While you can write <code>@api recordId;</code>, the getter/setter
+            pattern gives you more control.
+          </p>
+          <p><strong>Benefits:</strong></p>
+          <ul>
+            <li>Runs logic immediately when recordId arrives</li>
+            <li>Prevents repeated calls</li>
+            <li>Makes debugging easier</li>
+          </ul>
+
+          <h3>🧾 JavaScript (sendEmailAction.js)</h3>
+
+          <pre><code class="language-js">
+import { LightningElement, api } from 'lwc';
+
+export default class SendEmailAction extends LightningElement {
+    _recordId;
+
+    @api
+    get recordId() {
+        return this._recordId;
+    }
+
+    set recordId(value) {
+        if (value !== this._recordId) {
+            this._recordId = value;
+            console.log('Record Id received: ' + this._recordId);
+
+            // You can call your initialization logic here:
+            // - fetch record data using Apex
+            // - pre-fill UI fields
+        }
+    }
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h2>📄 Template (HTML)</h2>
+          <pre><code class="language-html">
+&lt;template&gt;
+  &lt;lightning-quick-action-panel header="My action"&gt;
+
+    Here's some content for the modal body.  
+    Record Id: {recordId}
+
+    &lt;div slot="footer"&gt;
+      &lt;lightning-button variant="neutral" label="Cancel"&gt;&lt;/lightning-button&gt;
+      &lt;lightning-button
+        variant="brand"
+        label="Save"
+        class="slds-m-left_x-small"
+      &gt;&lt;/lightning-button&gt;
+    &lt;/div&gt;
+
+  &lt;/lightning-quick-action-panel&gt;
+&lt;/template&gt;
+</code></pre>
+        </section>
+
+        <section>
+          <h2>🧩 meta XML — Enable as Screen Quick Action</h2>
+          <p>
+            Use this updated meta XML for the new
+            <strong>ScreenAction</strong> type:
+          </p>
+
+          <pre><code class="language-xml">
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata"&gt;
+    &lt;apiVersion&gt;65.0&lt;/apiVersion&gt;
+    &lt;isExposed&gt;true&lt;/isExposed&gt;
+
+    &lt;targets&gt;
+      &lt;target&gt;lightning__RecordAction&lt;/target&gt;
+    &lt;/targets&gt;
+
+    &lt;targetConfigs&gt;
+      &lt;targetConfig targets="lightning__RecordAction"&gt;
+        &lt;actionType&gt;ScreenAction&lt;/actionType&gt;
+      &lt;/targetConfig&gt;
+    &lt;/targetConfigs&gt;
+&lt;/LightningComponentBundle&gt;
+</code></pre>
+        </section>
+
+        <section>
+          <h2>🛠️ How to Test</h2>
+          <ol>
+            <li>Deploy the LWC.</li>
+            <li>Go to Object Manager → Buttons, Links & Actions.</li>
+            <li>Create a new Quick Action using your LWC.</li>
+            <li>Add it to the Page Layout.</li>
+            <li>Open a record → Click the Quick Action.</li>
+          </ol>
+          <p>
+            You should see the console log:
+            <code>Record Id received: &lt;Id&gt;</code>
+          </p>
+        </section>
+
+        <section>
+          <h2>⚠️ Common Mistakes</h2>
+          <ul>
+            <li>Adding LWC to Lightning page instead of a Quick Action</li>
+            <li>Missing <code>lightning__RecordAction</code> target</li>
+            <li>Not using setter, leading to late initialization</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>🧾 Conclusion</h2>
+          <p>
+            Using a getter/setter for <code>recordId</code> ensures your Quick
+            Action initializes instantly with the context of the current record.
+            This pattern works for creating related records, sending emails,
+            fetching data, and more.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <!-- Social Share Section -->
+    <div class="share-buttons">
+      <h3>Share this article</h3>
+      <a class="share-btn fb" href="#" target="_blank">Facebook</a>
+      <a class="share-btn tw" href="#" target="_blank">Twitter/X</a>
+      <a class="share-btn ln" href="#" target="_blank">LinkedIn</a>
+      <a class="share-btn wa" href="#" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Global Footer -->
+    <footer></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/core/header-footer.js" defer></script>
+    <script src="/js/core/theme.js" defer></script>
+    <script src="/js/share/share-buttons.js" defer></script>
+  </body>
+</html>
