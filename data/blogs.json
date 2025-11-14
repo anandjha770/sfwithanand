@@ -1,5 +1,12 @@
 [
   {
+    "title": "How to Set recordId in LWC Quick Action in Salesforce",
+    "description": "Learn how to correctly capture and use recordId inside a Lightning Web Component (LWC) Quick Action in Salesforce using the recommended getter/setter pattern.",
+    "link": "blog/how-to-set-recordid-in-lwc-quick-action.html",
+    "date": "November 13, 2025",
+    "category": "LWC"
+  },
+  {
     "title": "Style File Upload in Salesforce LWC Using Static Resource",
     "description": "Learn how to enhance and expand the drop area of the Lightning File Upload component in Salesforce LWC using a custom CSS file stored as a Static Resource. Step-by-step guide with code examples and explanations.",
     "link": "blog/style-file-upload-using-static-resource.html",
