@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+
+    <!-- 🔥 GA MUST load before head-loader -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SNG1ZPG3BP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SNG1ZPG3BP");
+    </script>
+
+    <!-- Load global head components -->
+    <script src="/js/core/head-loader.js" defer></script>
+
+    <title>
+      How to Use getRelatedListRecords in Salesforce LWC (Fetch Related List
+      Data)
+    </title>
+  </head>
+
+  <body class="blog-page">
+    <!-- Global Header -->
+    <header></header>
+
+    <!-- Blog Post Content -->
+    <main class="blog-content">
+      <article>
+        <h1 class="fw-bold mb-3">
+          🔄 How to Use getRelatedListRecords in LWC to Fetch Related List Data
+          in Salesforce
+        </h1>
+
+        <p class="text-muted mb-5">
+          Published on November 17, 2025 • by Anand Kumar Jha
+        </p>
+
+        <!-- INTRO -->
+        <section>
+          <h2>🔹 Introduction</h2>
+          <p>
+            Salesforce provides an amazing UI API method called
+            <code>getRelatedListRecords</code> that lets you fetch related list
+            data <strong>without writing any Apex</strong>. This is extremely
+            useful when you want to display data like:
+          </p>
+
+          <ul>
+            <li>Contacts related to an Account</li>
+            <li>Opportunities related to an Account</li>
+            <li>Cases under a Contact</li>
+            <li>Any standard or custom related list</li>
+          </ul>
+
+          <p>
+            In this tutorial, you’ll learn how to fetch
+            <strong>Contacts</strong>
+            related to an Account using
+            <strong>getRelatedListRecords</strong> and show them in a
+            <code>lightning-datatable</code>.
+          </p>
+        </section>
+
+        <!-- GOAL -->
+        <section>
+          <h2>🎯 Goal</h2>
+          <ul>
+            <li>
+              Use <code>getRelatedListRecords</code> to load related list data
+            </li>
+            <li>Map LDS response into a usable JS array</li>
+            <li>Display results using <code>lightning-datatable</code></li>
+            <li>Handle errors cleanly</li>
+          </ul>
+        </section>
+
+        <!-- STEP 1 HTML -->
+        <section>
+          <h2>🏗️ Step 1: LWC HTML Structure</h2>
+          <p>
+            This is the layout that displays related contacts inside a card:
+          </p>
+
+          <pre><code class="language-html">
+&lt;template&gt;
+  &lt;lightning-card title="Contacts (Related List)"&gt;
+    &lt;template if:true={data}&gt;
+      &lt;lightning-datatable 
+        key-field="Id" 
+        data={data} 
+        columns={columns}
+      &gt;&lt;/lightning-datatable&gt;
+    &lt;/template&gt;
+
+    &lt;template if:true={error}&gt;
+      &lt;p&gt;Error loading related records.&lt;/p&gt;
+    &lt;/template&gt;
+  &lt;/lightning-card&gt;
+&lt;/template&gt;
+</code></pre>
+        </section>
+
+        <!-- STEP 2 JS -->
+        <section>
+          <h2>⚙️ Step 2: JavaScript — Fetch Related List Records</h2>
+
+          <p>
+            Using <code>@wire</code> with
+            <strong>getRelatedListRecords</strong>:
+          </p>
+
+          <pre><code class="language-js">
+import { LightningElement, api, wire } from "lwc";
+import { getRelatedListRecords } from "lightning/uiRelatedListApi";
+
+export default class TestGetRelatedListData extends LightningElement {
+  @api recordId;
+
+  columns = [
+    { label: "Name", fieldName: "Name" },
+    { label: "Email", fieldName: "Email" }
+  ];
+
+  data = [];
+  error;
+
+  @wire(getRelatedListRecords, {
+    parentRecordId: "$recordId",
+    relatedListId: "Contacts",
+    fields: ["Contact.Id", "Contact.Name", "Contact.Email"]
+  })
+  wiredRecords({ data, error }) {
+    if (data) {
+      console.log("Raw LDS Data:", JSON.parse(JSON.stringify(data)));
+
+      // Convert LDS format → datatable format
+      this.data = data.records.map((rec) => ({
+        Id: rec.fields.Id.value,
+        Name: rec.fields.Name.value,
+        Email: rec.fields.Email.value
+      }));
+
+      console.log("Datatable Data:", this.data);
+
+      this.error = undefined;
+    } else if (error) {
+      this.error = error;
+      this.data = [];
+    }
+  }
+}
+</code></pre>
+        </section>
+
+        <!-- STEP 3 META -->
+        <section>
+          <h2>🧾 Step 3: meta.xml File</h2>
+          <p>Expose your component on the record page:</p>
+
+          <pre><code class="language-xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata"&gt;
+  &lt;apiVersion&gt;62.0&lt;/apiVersion&gt;
+  &lt;isExposed&gt;true&lt;/isExposed&gt;
+  &lt;targets&gt;
+    &lt;target&gt;lightning__RecordPage&lt;/target&gt;
+  &lt;/targets&gt;
+&lt;/LightningComponentBundle&gt;
+</code></pre>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section>
+          <h2>🧠 How It Works</h2>
+          <ul>
+            <li>
+              <strong>parentRecordId</strong> → the current record where
+              component is placed
+            </li>
+            <li>
+              <strong>relatedListId</strong> → API name of related list
+              (Contacts)
+            </li>
+            <li><strong>fields</strong> → fields you want to fetch</li>
+            <li>
+              <strong>LDS returns nested JSON</strong>, so we manually extract
+              values to map them into a clean datatable format
+            </li>
+          </ul>
+          <p>This means NO Apex, NO SOQL — everything is handled via UI API.</p>
+        </section>
+
+        <!-- BONUS -->
+        <section>
+          <h2>💬 Bonus Tips</h2>
+
+          <ul>
+            <li>You can sort or filter the retrieved data manually</li>
+            <li>
+              Replace Contacts with any related list (Opportunities, Cases,
+              etc.)
+            </li>
+            <li>Use this in Account, Contact, or custom object record pages</li>
+            <li>UI API respects FLS & CRUD automatically</li>
+          </ul>
+        </section>
+
+        <!-- VIDEO -->
+        <section>
+          <h2>📺 Watch the Video Tutorial</h2>
+          <p>
+            I’ve also created a detailed explanation on YouTube:<br />
+            👉
+            <a href="https://www.youtube.com/embed/TQtn8mpvMMw" target="_blank">
+              Watch on YouTube (CodeWithAnand)
+            </a>
+          </p>
+        </section>
+
+        <!-- CONCLUSION -->
+        <section>
+          <h2>🧾 Conclusion</h2>
+          <p>
+            <strong>getRelatedListRecords</strong> is one of the easiest and
+            most powerful ways to load related list data in LWC — without
+            writing a single line of Apex. If you’re building record page
+            components, this is a must-use tool.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <!-- Share Buttons -->
+    <div class="share-buttons">
+      <h3>Share this article</h3>
+      <a class="share-btn fb" href="#" target="_blank">Facebook</a>
+      <a class="share-btn tw" href="#" target="_blank">Twitter/X</a>
+      <a class="share-btn ln" href="#" target="_blank">LinkedIn</a>
+      <a class="share-btn wa" href="#" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Global Footer -->
+    <footer></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/core/header-footer.js" defer></script>
+    <script src="../js/core/theme.js" defer></script>
+    <script src="../js/share/share-buttons.js" defer></script>
+  </body>
+</html>

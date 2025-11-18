@@ -1,5 +1,11 @@
 [
   {
+    "title": "How to Use getRelatedListRecords in LWC to Fetch Related List Data",
+    "description": "Learn how to fetch related list records in Salesforce using the getRelatedListRecords UI API in LWC — without writing Apex. Includes full code for HTML, JS, and mapping LDS response to lightning-datatable.",
+    "youtubeId": "TQtn8mpvMMw",
+    "date": "November 18, 2025"
+  },
+  {
     "title": "How to Get All Contacts of an Account using DR",
     "description": "In this video, I explain how to retrieve all Contacts related to an Account in Salesforce using a DataRaptor (DR).",
     "youtubeId": "VUJbvHfgRsE?si=OIDRcGEnug717kr7",
