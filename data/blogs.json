@@ -1,5 +1,12 @@
 [
   {
+    "title": "How to Use getRelatedListRecords in LWC to Fetch Related List Data",
+    "description": "Learn how to fetch related list records in Salesforce using the getRelatedListRecords UI API in LWC — without writing Apex. Includes full code for HTML, JS, and mapping LDS response to lightning-datatable.",
+    "link": "blog/how-to-use-getrelatedlistrecords-in-lwc.html",
+    "date": "November 18, 2025",
+    "category": "LWC"
+  },
+  {
     "title": "How to Set recordId in LWC Quick Action in Salesforce",
     "description": "Learn how to correctly capture and use recordId inside a Lightning Web Component (LWC) Quick Action in Salesforce using the recommended getter/setter pattern.",
     "link": "blog/how-to-set-recordid-in-lwc-quick-action.html",
