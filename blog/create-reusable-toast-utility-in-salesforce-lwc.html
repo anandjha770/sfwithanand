@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+
+    <!-- 🔥 Google Analytics (must load before head-loader) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SNG1ZPG3BP"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-SNG1ZPG3BP");
+    </script>
+
+    <!-- Load head-loader -->
+    <script src="/js/core/head-loader.js" defer></script>
+
+    <title>Create a Reusable Toast Utility in Salesforce LWC</title>
+  </head>
+
+  <body class="blog-page">
+    <!-- Global Header -->
+    <header></header>
+
+    <main class="blog-content">
+      <article>
+        <h1 class="fw-bold mb-3">
+          ⚡ Create a Reusable Toast Utility in Salesforce LWC
+        </h1>
+
+        <p class="text-muted mb-5">
+          Published on December 10, 2025 • by Anand Kumar Jha
+        </p>
+
+        <!-- INTRODUCTION -->
+        <section>
+          <h2>🔹 Introduction</h2>
+          <p>
+            Toast messages are one of the most commonly used UI elements in
+            <strong>Lightning Web Components (LWC)</strong>. Whether you're
+            saving a record, displaying an error, or giving warnings, toast
+            notifications help you communicate with users effectively.
+          </p>
+          <p>
+            But repeating toast logic in every component leads to duplicate
+            code. So today, we’ll build a
+            <strong>Reusable Toast Utility</strong> that can be imported
+            anywhere in your project with a single line!
+          </p>
+        </section>
+
+        <!-- GOAL -->
+        <section>
+          <h2>🎯 Goal</h2>
+          <ul>
+            <li>Create a universal toast helper function.</li>
+            <li>Reduce duplicate code across LWCs.</li>
+            <li>Trigger Success, Error, Warning, and Info toasts easily.</li>
+            <li>Import and reuse toast logic in any component.</li>
+          </ul>
+        </section>
+
+        <!-- FOLDER STRUCTURE -->
+        <section>
+          <h2>📁 Folder Structure</h2>
+
+          <pre><code class="language-text">
+lwc
+ ├── toastUtils
+ ├── toastDemo
+</code></pre>
+        </section>
+
+        <!-- TOAST UTILITY -->
+        <section>
+          <h2>🧩 Step 1: Create toastUtils Utility Module</h2>
+
+          <h3>⚙️ JavaScript (toastUtils.js)</h3>
+          <pre><code class="language-js">
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+
+const showToast = (cmp, title, message, variant) => {
+  cmp.dispatchEvent(
+    new ShowToastEvent({
+      title: title,
+      message: message,
+      variant: variant
+    })
+  );
+};
+
+export { showToast };
+</code></pre>
+
+          <h3>📄 Meta File (toastUtils.js-meta.xml)</h3>
+          <pre><code class="language-xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>false</isExposed>
+</LightningComponentBundle>
+</code></pre>
+
+          <p>
+            This utility is not exposed because it is not a UI component — it's
+            only meant to be imported into other LWCs.
+          </p>
+        </section>
+
+        <!-- DEMO COMPONENT -->
+        <section>
+          <h2>🧪 Step 2: Create a Demo Component to Test Toast Utility</h2>
+
+          <h3>🧾 HTML (toastDemo.html)</h3>
+          <pre><code class="language-html">
+&lt;template&gt;
+  &lt;lightning-card variant="base"&gt;
+    &lt;lightning-button label="Show Success Toast" onclick={showSuccessToast}&gt;&lt;/lightning-button&gt;
+    &lt;lightning-button label="Show Error Toast" onclick={showErrorToast}&gt;&lt;/lightning-button&gt;
+    &lt;lightning-button label="Show Warning Toast" onclick={showWarningToast}&gt;&lt;/lightning-button&gt;
+    &lt;lightning-button label="Show Info Toast" onclick={showInfoToast}&gt;&lt;/lightning-button&gt;
+  &lt;/lightning-card&gt;
+&lt;/template&gt;
+</code></pre>
+
+          <h3>⚙️ JavaScript (toastDemo.js)</h3>
+          <pre><code class="language-js">
+import { LightningElement } from "lwc";
+import { showToast } from "c/toastUtils";
+
+export default class ToastDemo extends LightningElement {
+  showSuccessToast() {
+    showToast(this, "Success!", "The operation was completed successfully.", "success");
+  }
+  showErrorToast() {
+    showToast(this, "Error!", "There was an error processing your request.", "error");
+  }
+  showWarningToast() {
+    showToast(this, "Warning!", "This is a warning message.", "warning");
+  }
+  showInfoToast() {
+    showToast(this, "Info", "This is an informational message.", "info");
+  }
+}
+</code></pre>
+
+          <h3>📄 Meta File (toastDemo.js-meta.xml)</h3>
+          <pre><code class="language-xml">
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <targets>
+    <target>lightning__AppPage</target>
+    <target>lightning__RecordPage</target>
+    <target>lightning__HomePage</target>
+  </targets>
+</LightningComponentBundle>
+</code></pre>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section>
+          <h2>🧠 How It Works</h2>
+          <ul>
+            <li>
+              The utility creates a reusable wrapper around
+              <code>ShowToastEvent</code>.
+            </li>
+            <li>You pass <code>this</code>, title, message, and variant.</li>
+            <li>No more repeated toast code in every component!</li>
+            <li>Easy to scale across your Salesforce org.</li>
+          </ul>
+        </section>
+
+        <!-- VIDEO -->
+        <section>
+          <h2>📺 Watch the Full Video Tutorial</h2>
+          <p>
+            Here is the complete walkthrough on YouTube:<br />
+            👉
+            <a
+              href="https://www.youtube.com/embed/pNkz9s-HZ1c?si=_iTMP826QpPsVNCh"
+              target="_blank"
+            >
+              Create a Reusable Toast Utility in Salesforce LWC — Watch on
+              YouTube
+            </a>
+          </p>
+        </section>
+
+        <!-- CONCLUSION -->
+        <section>
+          <h2>🧾 Conclusion</h2>
+          <p>
+            Building a reusable toast utility keeps your code clean, modular,
+            and easy to maintain. Instead of writing toast logic in every
+            component, you now have a single shared helper that works across
+            your entire Salesforce project.
+          </p>
+          <p>
+            This is one of the essential best practices when architecting
+            enterprise-grade LWC applications.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <!-- Share Buttons -->
+    <div class="share-buttons">
+      <h3>Share this article</h3>
+      <a class="share-btn fb" href="#" target="_blank">Facebook</a>
+      <a class="share-btn tw" href="#" target="_blank">Twitter/X</a>
+      <a class="share-btn ln" href="#" target="_blank">LinkedIn</a>
+      <a class="share-btn wa" href="#" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Global Footer -->
+    <footer></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/core/header-footer.js" defer></script>
+    <script src="../js/core/theme.js" defer></script>
+    <script src="../js/share/share-buttons.js" defer></script>
+  </body>
+</html>
