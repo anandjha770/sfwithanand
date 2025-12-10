@@ -1,5 +1,11 @@
 [
   {
+    "title": "Create a Reusable Toast Utility in Salesforce LWC",
+    "description": "Learn how to build a reusable toast notification utility in Salesforce LWC to simplify success, error, warning, and info messages. Includes full folder structure, utility module, demo component, and code walkthrough.",
+    "youtubeId": "pNkz9s-HZ1c",
+    "date": "December 10, 2025"
+  },
+  {
     "title": "How to Use getRelatedListRecords in LWC to Fetch Related List Data",
     "description": "Learn how to fetch related list records in Salesforce using the getRelatedListRecords UI API in LWC — without writing Apex. Includes full code for HTML, JS, and mapping LDS response to lightning-datatable.",
     "youtubeId": "TQtn8mpvMMw",
