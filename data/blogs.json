@@ -1,5 +1,12 @@
 [
   {
+    "title": "Build a Job Board in Salesforce LWC | HireMe Mini Project",
+    "description": "Build a complete Job Board application in Salesforce using Lightning Web Components (LWC). Learn data modeling, reusable components, Apex integration, @wire, Lightning Data Service, search functionality, and toast notifications through a real-world HireMe mini project.",
+    "link": "blog/build-job-board-salesforce-lwc-hireme.html",
+    "date": "December 25, 2025",
+    "category": "LWC"
+  },
+  {
     "title": "Create a Reusable Toast Utility in Salesforce LWC",
     "description": "Build a reusable toast notification utility in Salesforce LWC to simplify success, error, warning, and info messages. Avoid repeating ShowToastEvent code by importing a single shared helper function across components.",
     "link": "blog/create-reusable-toast-utility-in-salesforce-lwc.html",

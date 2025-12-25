@@ -9,7 +9,7 @@
 
   <url>
     <loc>https://sfwithanand.in/blog.html</loc>
-    <lastmod>2025-12-10</lastmod>
+    <lastmod>2025-12-25</lastmod> <!-- new blog added -->
     <priority>0.90</priority>
   </url>
 
@@ -47,6 +47,12 @@
   <url>
     <loc>https://sfwithanand.in/blog/style-file-upload-using-static-resource.html</loc>
     <lastmod>2025-12-10</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://sfwithanand.in/blog/build-job-board-salesforce-lwc-hireme.html</loc>
+    <lastmod>2025-12-25</lastmod>
     <priority>0.80</priority>
   </url>
 

@@ -1,5 +1,47 @@
 [
   {
+    "title": "Build a Job Board in Salesforce LWC | HireMe Mini Project",
+    "description": "Project overview and demo of the HireMe Job Board mini project built using Salesforce Lightning Web Components.",
+    "youtubeId": "FFj-3rboO1s",
+    "date": "December 25, 2025"
+  },
+  {
+    "title": "Salesforce LWC Mini Project | Data Model & Environment Setup (Job Board)",
+    "description": "Setup the Salesforce org, create the Job data model, and prepare the environment for the HireMe Job Board application.",
+    "youtubeId": "InrU1P2u4w8",
+    "date": "December 25, 2025"
+  },
+  {
+    "title": "Salesforce LWC Mini Project | Build a Reusable Job Tile Component",
+    "description": "Learn how to build a reusable Job Tile Lightning Web Component with clean UI and component architecture.",
+    "youtubeId": "lq-RBuu_5UY",
+    "date": "December 25, 2025"
+  },
+  {
+    "title": "Salesforce LWC Mini Project | Create Job Records for LWC Demo",
+    "description": "Create realistic Job records in Salesforce to use as demo data for the HireMe Job Board project.",
+    "youtubeId": "sinvUAmsHoY",
+    "date": "December 25, 2025"
+  },
+  {
+    "title": "Salesforce LWC Mini Project | Create HireMe App, Console & Home Page",
+    "description": "Create a custom Salesforce app, configure console navigation, and set up a home page for the HireMe Job Board.",
+    "youtubeId": "rymz68FO2G0",
+    "date": "December 25, 2025"
+  },
+  {
+    "title": "Salesforce LWC Mini Project | Build Job Board with Search, Apex & @wire",
+    "description": "Implement job search functionality using Apex and @wire to fetch and display Job data in Lightning Web Components.",
+    "youtubeId": "tABKZVKsdOU",
+    "date": "December 25, 2025"
+  },
+  {
+    "title": "Salesforce LWC Mini Project | Apply for Job Using LDS & Toasts",
+    "description": "Learn how to apply for jobs using Lightning Data Service (LDS) and show success or error toast notifications.",
+    "youtubeId": "zEStxxQ4vpU",
+    "date": "December 25, 2025"
+  },
+  {
     "title": "Create a Reusable Toast Utility in Salesforce LWC",
     "description": "Learn how to build a reusable toast notification utility in Salesforce LWC to simplify success, error, warning, and info messages. Includes full folder structure, utility module, demo component, and code walkthrough.",
     "youtubeId": "pNkz9s-HZ1c",
